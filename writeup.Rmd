@@ -1,0 +1,190 @@
+---
+title: 'Coursera : Practical Machine Learning Project - Prediction Model'
+author: "nvramamoorthy"
+date: "14 June 2015"
+output: 
+  html_document: 
+    keep_md: yes
+---
+###Synopsis
+
+The project is about HAR - Human Activity Recognition , where 6  participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways and the relevant data were collected using the devices like  Jawbone Up, Nike FuelBand, and Fitbit which were worn by the paricipants.
+
+The participant  regularly  quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
+
+The dataset contains data on  5 classes (sitting-down, standing-up, standing, walking, and sitting) collected on 8 hours of activities through those devices.
+
+The aim  to train a model based on the data of various sensor values, which could later be used to predict the Classe variable, that is the manner in which the participants of HAR did the exercise.
+
+###Initial Setup
+
+####Enivironment
+
+#####Hardware : 
+
+                Macbook Pro with OSX Yosemite 10.10.4
+
+#####Software : 
+
+                RStudio 
+                
+                GitHub DeskTop / Web Version
+                
+
+###Data Processing
+
+####Setting up working directory:
+
+```{r}
+setwd("~/Desktop/Machine Learning/Coursera-PML-Project")
+```
+
+
+The required R Packeges were installed :
+
+```{r}
+library(caret)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(corrplot)
+```
+
+
+####Download the Data    :
+
+            The training and test data were downloaded as instructed.
+            Trainig Data : pml-training.csv 
+            Test data    : pml-testing.csv
+            
+
+```{r}
+trainUrl <-"https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+testUrl <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
+trainFile <- "./data/pml-training.csv"
+testFile  <- "./data/pml-testing.csv"
+if (!file.exists("./data")) {
+  dir.create("./data")
+}
+if (!file.exists(trainFile)) {
+  download.file(trainUrl, destfile=trainFile, method="curl")
+}
+if (!file.exists(testFile)) {
+  download.file(testUrl, destfile=testFile, method="curl")
+}
+```
+
+####Read the data into Dataframes and check for the content:
+
+```{r}
+trainRaw <- read.csv("./data/pml-training.csv")
+testRaw <- read.csv("./data/pml-testing.csv")
+dim(trainRaw)
+dim(testRaw)
+```
+
+####Cleaning the Data :
+
+On inspecting both traing and test the dataset, some missing data  and unwated data were found which were to be cleaned.
+
+```{r}
+sum(complete.cases(trainRaw))
+```
+
+The columns containing NA were replaced with 0:
+
+```{r}
+trainRaw <- trainRaw[, colSums(is.na(trainRaw)) == 0] 
+testRaw <- testRaw[, colSums(is.na(testRaw)) == 0] 
+```
+Few columns where those  data do not have any meaning with the measurements data were removed.
+
+```{r}
+classe <- trainRaw$classe
+trainRemove <- grepl("^X|timestamp|window", names(trainRaw))
+trainRaw <- trainRaw[, !trainRemove]
+trainCleaned <- trainRaw[, sapply(trainRaw, is.numeric)]
+trainCleaned$classe <- classe
+testRemove <- grepl("^X|timestamp|window", names(testRaw))
+testRaw <- testRaw[, !testRemove]
+testCleaned <- testRaw[, sapply(testRaw, is.numeric)]
+```
+
+The cleaned training data set now contains 19622 observations and 53 variables, while the testing data set contains 20 observations and 53 variables. The "classe" variable is still in the cleaned training set.
+
+####Slicing the data:
+
+Then, we can split the cleaned training set into a pure training data set (70%) and a validation data set (30%). We will use the validation data set to conduct cross validation in future steps. 
+
+```{r}
+set.seed(22519) # For reproducibile purpose
+inTrain <- createDataPartition(trainCleaned$classe, p=0.70, list=F)
+trainData <- trainCleaned[inTrain, ]
+testData <- trainCleaned[-inTrain, ]
+```
+
+####Data Modeling:
+
+We fit a predictive model for activity recognition using Random Forest algorithm because it automatically selects important variables and is robust to correlated covariates & outliers in general. We will use 5-fold cross validation when applying the algorithm. 
+
+```{r}
+controlRf <- trainControl(method="cv", 5)
+modelRf <- train(classe ~ ., data=trainData, method="rf", trControl=controlRf, ntree=250)
+modelRf
+```
+The performance of the model on the validation data set is estimated.
+
+```{r}
+predictRf <- predict(modelRf, testData)
+confusionMatrix(testData$classe, predictRf)
+
+```
+
+```{r}
+accuracy <- postResample(predictRf, testData$classe)
+accuracy
+outSampErr <- 1 - as.numeric(confusionMatrix(testData$classe, predictRf)$overall[1])
+outSampErr
+```
+
+The accuracy of the model is estimated as 99.30% and out of sample error of 0.69 % is estimated.
+
+####Predicting for Test Data Set:
+
+Finally  we apply the model to the original testing data set downloaded from the data source. We remove the problem_id column first. 
+
+```{r}
+result <- predict(modelRf, testCleaned[, -length(names(testCleaned))])
+result
+```
+
+###Conclusion
+
+#####It is found that the accuracy of the model is  99.30% and out of sample error is  0.69% .
+
+Plots are available in the folder 'Figures' in th GitHub Repository and appended in Appendix.
+
+I acknowledge my thanks to the Coursera team and course participants for giving this opporunity to enrich my knowledge by doing this interesting project.
+
+I also thank HAR data provider for this excercise.
+
+####Appendix : Plots
+
+#####Decision Tree Visualization
+
+```{r}
+treeModel <- rpart(classe ~ ., data=trainData, method="class")
+prp(treeModel) 
+```
+
+#####Correlation Matrix Visualization
+
+```{r}
+corrPlot <- cor(trainData[, -length(names(trainData))])
+corrplot(corrPlot, method="color")
+```
+
+
+
+
+
