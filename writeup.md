@@ -273,15 +273,15 @@ result
 
 #####It is found that the accuracy of the model is  99.30% and out of sample error is  0.69% .
 
-Plots are available in the folder 'Figures' in th GitHub Repository and appended in Appendix.
+Plots are available in the folder 'writeup_files/figure-html' in th GitHub Repository and appended in Appendix.
 
 I acknowledge my thanks to the Coursera team and course participants for giving this opporunity to enrich my knowledge by doing this interesting project.
 
 I also thank HAR data provider for this excercise.
 
-####Appendix : Plots
+####Appendix : 
 
-#####Decision Tree Visualization
+#####Plot 1: Decision Tree Visualization
 
 
 ```r
@@ -291,7 +291,7 @@ prp(treeModel)
 
 ![](writeup_files/figure-html/unnamed-chunk-13-1.png) 
 
-#####Correlation Matrix Visualization
+#####Plot 2 :Correlation Matrix Visualization
 
 
 ```r

@@ -171,16 +171,16 @@ I acknowledge my thanks to the Coursera team and course participants for giving 
 
 I also thank HAR data provider for this excercise.
 
-####Appendix : Plots
+###Appendix 
 
-#####Decision Tree Visualization
+#####Plot 1: Decision Tree Visualization
 
 ```{r}
 treeModel <- rpart(classe ~ ., data=trainData, method="class")
 prp(treeModel) 
 ```
 
-#####Correlation Matrix Visualization
+#####Plot 2 :Correlation Matrix Visualization
 
 ```{r}
 corrPlot <- cor(trainData[, -length(names(trainData))])
