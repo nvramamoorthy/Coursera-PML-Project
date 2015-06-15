@@ -143,7 +143,7 @@ testRaw <- testRaw[, !testRemove]
 testCleaned <- testRaw[, sapply(testRaw, is.numeric)]
 ```
 
-The cleaned training data set now contains 19622 observations and 53 variables, while the testing data set contains 20 observations and 53 variables. The "classe" variable is still in the cleaned training set.
+Raw training data contained 19622 rows and 160 variable columns. The cleaned training data set now contains 19622 observations and 53 variables columns only, while the testing data set contains 20 observations and 53 variables. The "classe" variable is still in the cleaned training set.
 
 ####Slicing the data:
 
@@ -279,9 +279,9 @@ I acknowledge my thanks to the Coursera team and course participants for giving 
 
 I also thank HAR data provider for this excercise.
 
-####Appendix : Plots
+###Appendix : 
 
-#####Decision Tree Visualization
+#####Plot 1 : Decision Tree Visualization
 
 
 ```r
@@ -291,7 +291,7 @@ prp(treeModel)
 
 ![](writeup_files/figure-html/unnamed-chunk-13-1.png) 
 
-#####Correlation Matrix Visualization
+#####Plot 2 : Correlation Matrix Visualization
 
 
 ```r
