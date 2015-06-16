@@ -67,13 +67,26 @@ img {
 <h4 class="date"><em>14 June 2015</em></h4>
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#synopsis">Synopsis</a></li>
+<li><a href="#initial-setup">Initial Setup</a></li>
+<li><a href="#data-processing">Data Processing</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#appendix">Appendix :</a></li>
+</ul>
+</div>
 
 <div id="synopsis" class="section level3">
 <h3>Synopsis</h3>
 <p>The project is about HAR - Human Activity Recognition , where 6 participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways and the relevant data were collected using the devices like Jawbone Up, Nike FuelBand, and Fitbit which were worn by the paricipants.</p>
-<p>The participant regularly quantify how much of a particular activity they do, but they rarely quantify how well they do it.</p>
-<p>The dataset contains data on 5 classes (sitting-down, standing-up, standing, walking, and sitting) collected on 8 hours of activities through those devices.</p>
-<p>The aim to train a model based on the data of various sensor values, which could later be used to predict the Classe variable, that is the manner in which the participants of HAR did the exercise.</p>
+<p>The participant normally quantify how much of a particular activity they do, but they rarely quantify how well they do it.</p>
+<p>Six young health participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).</p>
+<p>The goal is to assess whether we could detect mistakes in weight-lifting exercises by using activity recognition techniques. we recorded users performing the same activity correctly and with a set of common mistakes with wearable sensors and used machine learning toclassify each mistake.</p>
+<p>This way, we used the training data as the activity specification and the classification algorithm as the means to compare the execution to the specification.</p>
+<p>Our aim is to build a prediction model algorithm , cross validate and find the out of sample error.</p>
+<p>We tested the prdeiction model on 20 different Test cases and sumbitted the result as required.</p>
+<p>The following sections deals with all data processing steps done for buiding the model and testing them.</p>
 </div>
 <div id="initial-setup" class="section level3">
 <h3>Initial Setup</h3>
@@ -97,7 +110,7 @@ img {
 <div id="setting-up-working-directory" class="section level4">
 <h4>Setting up working directory:</h4>
 <pre class="r"><code>setwd(&quot;~/Desktop/Machine Learning/Coursera-PML-Project&quot;)</code></pre>
-<p>The required R Packeges were installed :</p>
+<p>The required R Packeges were installed.</p>
 <pre class="r"><code>library(caret)</code></pre>
 <pre><code>## Loading required package: lattice
 ## Loading required package: ggplot2</code></pre>
@@ -246,6 +259,7 @@ result</code></pre>
 <h3>Conclusion</h3>
 <div id="it-is-found-that-the-accuracy-of-the-model-is-99.30-and-out-of-sample-error-is-0.69-." class="section level5">
 <h5>It is found that the accuracy of the model is 99.30% and out of sample error is 0.69% .</h5>
+<p>The prediction model was tested on 20 test cases and results were submitted as required</p>
 <p>Plots are available in the folder ‘writeup_files/figure-html’ in th GitHub Repository and appended in Appendix.</p>
 <p>I acknowledge my thanks to the Coursera team and course participants for giving this opporunity to enrich my knowledge by doing this interesting project.</p>
 <p>I also thank HAR data provider for this excercise.</p>

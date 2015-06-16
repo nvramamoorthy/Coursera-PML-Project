@@ -5,11 +5,19 @@ nvramamoorthy
 
 The project is about HAR - Human Activity Recognition , where 6  participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways and the relevant data were collected using the devices like  Jawbone Up, Nike FuelBand, and Fitbit which were worn by the paricipants.
 
-The participant  regularly  quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
+The participant  normally  quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
 
-The dataset contains data on  5 classes (sitting-down, standing-up, standing, walking, and sitting) collected on 8 hours of activities through those devices.
+Six young health participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).
 
-The aim  to train a model based on the data of various sensor values, which could later be used to predict the Classe variable, that is the manner in which the participants of HAR did the exercise.
+The goal is  to assess whether we could detect mistakes in weight-lifting exercises by using activity recognition techniques. we recorded users performing the same activity correctly and with a set of common mistakes with wearable sensors and used machine learning toclassify each mistake. 
+
+This way, we used the training data as the activity specification and the classification algorithm as the means to compare the execution to the specification.
+
+Our aim is to build a prediction model algorithm , cross validate and find the out of sample error. 
+
+We tested the prdeiction model on 20 different Test cases and sumbitted the result as required.
+
+The following sections deals with all data processing steps done for buiding the model and testing them.
 
 ###Initial Setup
 
@@ -36,7 +44,7 @@ setwd("~/Desktop/Machine Learning/Coursera-PML-Project")
 ```
 
 
-The required R Packeges were installed :
+The required R Packeges were installed.
 
 
 ```r
@@ -272,6 +280,8 @@ result
 ###Conclusion
 
 #####It is found that the accuracy of the model is  99.30% and out of sample error is  0.69% .
+
+The prediction model was tested on 20 test cases and results were submitted as required
 
 Plots are available in the folder 'writeup_files/figure-html' in th GitHub Repository and appended in Appendix.
 
