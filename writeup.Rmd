@@ -15,9 +15,10 @@ The project is about HAR - Human Activity Recognition , where 6  participants we
 
 The participant  regularly  quantify how much of a particular activity they do, but they rarely quantify how well they do it. 
 
-The dataset contains data on  5 classes (sitting-down, standing-up, standing, walking, and sitting) collected on 8 hours of activities through those devices.
+The dataset contains data on  5 classes (sitting-down, standing-up, standing, walking, and sitting) collected on 8 hours of activities through those activity monitor devices.
 
-The aim  to train a model based on the data of various sensor values, which could later be used to predict the Classe variable, that is the manner in which the participants of HAR did the exercise.
+The aim  is to build a machine learning algorithm to predict activity quality from activity sensor monitors and  train a model based on the data of various sensor values, which could later be used to predict the Classe variable, that is the manner in which the participants of HAR did the exercise.
+
 
 ###Initial Setup
 
