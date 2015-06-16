@@ -14,4 +14,6 @@ The goal is  to assess whether we could detect mistakes in weight-lifting exerci
 
 This way, we used the training data as the activity specification and the classification algorithm as the means to compare the execution to the specification.
 
+Our aim is to build a prediction model algorithm , cross validate and find the out of sample error.
 
+We tested the prediction model on 20 different Test cases and submitted the result as required.
