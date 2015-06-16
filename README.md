@@ -1,7 +1,9 @@
 # Coursera-PML-Project
 This repository is for Coursera Project,  'Practical Machine Learning'   offered by Johns Hopkins Bloomberg School of of Public Health.
 
-For More details : https://github.com/nvramamoorthy/Coursera-PML-Project/tree/gh-pages
+All the relevant resources can be found in following link:
+
+https://github.com/nvramamoorthy/Coursera-PML-Project/tree/gh-pages
 
 
 The project is about HAR - Human Activity Recognition , where 6  participants were asked to perform barbell lifts correctly and incorrectly in 5 different ways and the relevant data were collected using the devices like  Jawbone Up, Nike FuelBand, and Fitbit which were worn by the paricipants.
