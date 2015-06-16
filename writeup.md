@@ -9,19 +9,19 @@ The participant  normally  quantify how much of a particular activity they do, b
 
 Six young health participants were asked to perform one set of 10 repetitions of the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front (Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).
 
-The goal is  to assess whether we could detect mistakes in weight-lifting exercises by using activity recognition techniques. we recorded users performing the same activity correctly and with a set of common mistakes with wearable sensors and used machine learning toclassify each mistake. 
+The goal is  to assess whether we could detect mistakes in weight-lifting exercises by using activity recognition techniques. we recorded users performing the same activity correctly and with a set of common mistakes with wearable sensors and used machine learning to classify each mistake. 
 
 This way, we used the training data as the activity specification and the classification algorithm as the means to compare the execution to the specification.
 
 Our aim is to build a prediction model algorithm , cross validate and find the out of sample error. 
 
-We tested the prdeiction model on 20 different Test cases and sumbitted the result as required.
+We tested the prediction model on 20 different Test cases and submitted the result as required.
 
-The following sections deals with all data processing steps done for buiding the model and testing them.
+The following sections deals with all data processing steps done for building the model and testing them.
 
 ###Initial Setup
 
-####Enivironment
+####Environment
 
 #####Hardware : 
 
@@ -159,7 +159,7 @@ Then, we can split the cleaned training set into a pure training data set (70%) 
 
 
 ```r
-set.seed(22519) # For reproducibile purpose
+set.seed(22519) # For Reproducible purpose
 inTrain <- createDataPartition(trainCleaned$classe, p=0.70, list=F)
 trainData <- trainCleaned[inTrain, ]
 testData <- trainCleaned[-inTrain, ]
@@ -260,7 +260,7 @@ outSampErr
 ## [1] 0.006966865
 ```
 
-The accuracy of the model is estimated as 99.30% and out of sample error of 0.69 % is estimated.
+The accuracy of the model is estimated as 99.30 %  and out of sample error of 0.69 % is estimated.
 
 ####Predicting for Test Data Set:
 
