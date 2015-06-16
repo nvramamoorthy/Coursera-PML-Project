@@ -20,4 +20,4 @@ Our aim is to build a prediction model algorithm , cross validate and find the o
 
 We tested the prediction model on 20 different Test cases and submitted the result as required.
 
-The following sections deals with all data processing steps done for building the model and testing them.
+
